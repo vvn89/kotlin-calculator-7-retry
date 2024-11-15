@@ -81,20 +81,14 @@ fun useIsNullOrEmpty() {
 
 fun validateCustom(input: String): Boolean {
     if (input.contains("//") && input.contains("\\n")) {
-        return true
+        if (input.indexOf("//") < input.indexOf("\\n")) {
+            return true
+        }
     }
     return false
 }
 
 fun main() {
-//    useTryCatch()
-//    useCompare()
-//    useNull()
-//    useIsBlank()
-//    useIsEmpty()
-//    useIsNullOrBlank()
-//    useIsNullOrEmpty()
-
     try {
         var input = Console.readLine()
         if (validateCustom(input)) {
@@ -116,5 +110,8 @@ fun replacCustomSeperator(input: String): String {
     val postfix = "\\n"
     val inputs = input.split(postfix)
     val customSeparator = inputs[0].replace(prefix, "")
+    if (customSeparator.contains(Regex("\\d"))) {
+        throw IllegalArgumentException()
+    }
     return inputs[1].replace(customSeparator, ",")
 }
