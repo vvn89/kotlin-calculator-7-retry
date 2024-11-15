@@ -24,6 +24,14 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `black`() {
+        assertSimpleTest {
+            run()
+            assertThat(output()).contains("결과 : 0")
+        }
+    }
+
+    @Test
     fun `빈 문자열 예시 입력 테스트`() {
         assertSimpleTest {
             run("")
