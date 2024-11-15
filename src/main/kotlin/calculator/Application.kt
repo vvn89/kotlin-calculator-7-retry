@@ -102,6 +102,9 @@ fun main() {
         }
         val splitedInput = input.split(",", ":")
         val numbers: List<Int> = splitedInput.map { it.toInt() }
+        if (!numbers.all { it > 0 }) {
+            throw IllegalArgumentException()
+        }
         println("결과 : ${numbers.sum()}")
     } catch (e: NoSuchElementException) {
         println("결과 : 0")
