@@ -8,10 +8,26 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기본 구분자 사용`() {
+    fun `기본 구분자 콤마 사용`() {
         assertSimpleTest {
             run("1,2,3")
             assertThat(output()).contains("결과 : 6")
+        }
+    }
+
+    @Test
+    fun `기본 구분자 콜론 사용`() {
+        assertSimpleTest {
+            run("1:2:3")
+            assertThat(output()).contains("결과 : 6")
+        }
+    }
+
+    @Test
+    fun `빈 문자열 예시 입력 테스트`() {
+        assertSimpleTest {
+            run("")
+            assertThat(output()).contains("결과 : 0")
         }
     }
 
